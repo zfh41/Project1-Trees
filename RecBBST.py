@@ -9,22 +9,6 @@ class Node:
       self.right = None
       self.height = 1
 
-def getRandomArray(n):
-    randArray = list()
-    for i in range(n):
-      randint = random.randint(0, 1000);
-      while randint in randArray:
-        randint = random.randint(0, 1000);
-      randArray.append(randint)
-    return randArray
-
-
-def getSortedArray(n):
-  sorted_array = list()
-  for i in range(n, 0, -1):
-    sorted_array.append(i)
-  return sorted_array
-
 def findMinIter(root):
     while root.left is not None:
       root = root.left
@@ -86,18 +70,14 @@ def insertRecAVL(root, value): # recursive insert is broken
   if balance > 1:
       leftBalance = getBalance(root.left)
       if leftBalance == -1:
-        #print("--- left-right rotation ---")
         return leftRightRotate(root)
       elif leftBalance == 1:
-        #print("--- right rotation ---")
         return rightRotate(root)
   elif balance < -1:
     rightBalance = getBalance(root.right)
     if rightBalance == -1:
-      #print("--- left rotation ---")
       return leftRotate(root)
     elif rightBalance == 1:
-      #print("--- right-left rotation ---")
       return rightLeftRotate(root)
   return root
 
@@ -136,6 +116,23 @@ def deleteRecAVL(root, value):
       else:
         return leftRotate(root)
     return root
+
+def getRandomArray(n):
+    randArray = list()
+    for i in range(n):
+      randint = random.randint(0, 1000);
+      while randint in randArray:
+        randint = random.randint(0, 1000);
+      randArray.append(randint)
+    return randArray
+
+
+def getSortedArray(n):
+  sorted_array = list()
+  for i in range(n, 0, -1):
+    sorted_array.append(i)
+  return sorted_array
+
     
     
 
